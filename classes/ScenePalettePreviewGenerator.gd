@@ -21,13 +21,19 @@ static func generate_preview(node: Node, scene: PackedScene, preview_size: Vecto
 	return viewport.get_texture()
 
 static func get_node2d_visible_rect(node: Node, rect: Rect2 = Rect2()) -> Rect2:
-	if node.is_class("CollisionShape2D"): node.hide()
-	if node.get("visible") and node.visible and node.has_method("get_rect"):
-		rect = node.get_rect()
-		rect.position *= node.scale
-		rect.size *= node.scale
-		rect.position += node.position
-	for child in node.get_children():
-		if child is Node2D or Control:
-			rect = rect.merge(get_node2d_visible_rect(child, rect))
+	if node.get("visible"):
+		if node.is_class("CollisionShape2D"): node.hide()
+		elif node.is_class("TileMapLayer"):
+			var used_rect: Rect2 = node.get_used_rect()
+			var tile_size: Vector2 = node.tile_set.tile_size
+			rect.position = used_rect.position * tile_size
+			rect.end = used_rect.end * tile_size
+		elif node.has_method("get_rect"):
+			rect = node.get_rect()
+			rect.position *= node.scale
+			rect.position += node.position
+			rect.size *= node.scale
+		for child in node.get_children():
+			if child is Node2D or Control:
+				rect = rect.merge(get_node2d_visible_rect(child, rect))
 	return rect
