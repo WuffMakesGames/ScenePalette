@@ -151,7 +151,10 @@ size_flags_horizontal = 3
 size_flags_vertical = 3
 current_tab = 0
 
-[node name="PlacementMode" type="CheckButton" parent="HSplitContainer/PanelContainer/MarginContainer/VBoxContainer"]
+[node name="HBoxContainer" type="HBoxContainer" parent="HSplitContainer/PanelContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="PlacementMode" type="CheckButton" parent="HSplitContainer/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 0
 text = "Placement mode"

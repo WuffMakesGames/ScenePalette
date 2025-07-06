@@ -11,7 +11,7 @@ var editor_theme: Theme
 var scene_selected: String
 
 var settings = ConfigFile.new()
-var SETTINGS_PATH = "res://addons/scene-palette/settings.cfg"
+var SETTINGS_PATH = "res://addons/.configs/scene-palette.cfg"
 
 # Config ========================================
 var config_paths: Array
@@ -44,6 +44,7 @@ func config_save(do_refresh: bool = false) -> void:
 	settings.set_value("USER", "PATHS", config_paths)
 	settings.set_value("USER", "COLOR", config_colors)
 	settings.save(SETTINGS_PATH)
+	
 	emit_signal("config_updated")
 	if do_refresh: refresh()
 	
@@ -53,6 +54,9 @@ func _enter_tree() -> void:
 	editor_theme = EditorInterface.get_editor_theme()
 	
 	# Reload
+	var dir = ProjectSettings.globalize_path(SETTINGS_PATH.get_base_dir())
+	print(dir)
+	DirAccess.make_dir_recursive_absolute(dir)
 	config_load(true)
 	
 	# File dialog
