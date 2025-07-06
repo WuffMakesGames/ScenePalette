@@ -94,12 +94,14 @@ size_flags_horizontal = 8
 layout_mode = 2
 size_flags_horizontal = 8
 icon = SubResource("ImageTexture_p26ct")
+flat = true
 icon_alignment = 2
 
 [node name="Remove" type="Button" parent="HSplitContainer/PathList/Toolbar/HBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 8
 icon = SubResource("ImageTexture_dvjrl")
+flat = true
 icon_alignment = 2
 
 [node name="List" type="PanelContainer" parent="HSplitContainer/PathList"]
@@ -149,6 +151,7 @@ theme_override_constants/margin_bottom = 4
 
 [node name="VBoxContainer" type="VBoxContainer" parent="HSplitContainer/PanelContainer/MarginContainer"]
 layout_mode = 2
+theme_override_constants/separation = 4
 
 [node name="PanelContainer" type="PanelContainer" parent="HSplitContainer/PanelContainer/MarginContainer/VBoxContainer"]
 visible = false
@@ -167,7 +170,7 @@ current_tab = 0
 [node name="HBoxContainer" type="HBoxContainer" parent="HSplitContainer/PanelContainer/MarginContainer/VBoxContainer"]
 layout_mode = 2
 
-[node name="Button" type="Button" parent="HSplitContainer/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer"]
+[node name="GridToggle" type="Button" parent="HSplitContainer/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer"]
 custom_minimum_size = Vector2(24, 24)
 layout_mode = 2
 size_flags_horizontal = 4
