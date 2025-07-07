@@ -81,7 +81,7 @@ func _exit_tree() -> void:
 
 # Methods =======================================
 func refresh() -> void:
-	for child in tab_container.get_children(): child.queue_free()
+	for child in tab_container.get_children(): child.free()
 	paths_list.clear()
 	
 	# Load directories
@@ -111,8 +111,7 @@ func new_tab_group(title: String) -> Node:
 	return scroll_child
 
 func refresh_gui() -> void:
-	$HSplitContainer/PathList/Toolbar/HBoxContainer/Add.icon = editor_theme.get_icon("Add", "EditorIcons")
-	$HSplitContainer/PathList/Toolbar/HBoxContainer/Remove.icon = editor_theme.get_icon("Remove", "EditorIcons")
+	pass
 
 func load_directory(into: Node, dir: String) -> void:
 	
@@ -139,4 +138,5 @@ func _on_remove_pressed() -> void:
 	for index in paths_list.get_selected_items():
 		config_remove_path(paths_list.get_item_text(index))
 
-# Signals =======================================
+func _on_refresh_pressed() -> void:
+	refresh()
