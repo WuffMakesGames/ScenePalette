@@ -1,4 +1,4 @@
-@tool extends Button
+@tool class_name ScenePaletteEditorButton extends Button
 @export var editor_icon: String = "":
 	set(value):
 		var gui_theme = EditorInterface.get_editor_theme()
