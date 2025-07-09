@@ -55,7 +55,6 @@ func _enter_tree() -> void:
 	
 	# Reload
 	var dir = ProjectSettings.globalize_path(SETTINGS_PATH.get_base_dir())
-	print(dir)
 	DirAccess.make_dir_recursive_absolute(dir)
 	config_load(true)
 	
